@@ -10,7 +10,7 @@ const commonPlugins = [
 ];
 
 const config = {
-    input: "./build/websdk.client.js",
+    input: "./build/index.js",
     output: {
         file: `dist/${meta.name}.js`,
         name: "WebSdk",
@@ -21,7 +21,7 @@ const config = {
     },
     plugins: [
         ...commonPlugins,
-        terser(),
+        //terser(),
     ],
 };
 
