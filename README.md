@@ -10,5 +10,5 @@ Stanford Javascript Crypto Library updated to ES6.
 * [GH: 'BigInteger bnGetLowestSetBit'](https://github.com/search?q=BigInteger+bnGetLowestSetBit&type=code&ref=advsearch)
   * [travist/jsencrypt: jsbn.ts](https://github.com/travist/jsencrypt/blob/master/src/lib/jsbn/jsbn.ts)
   * [travist/jsencrypt: rng.ts](https://github.com/travist/jsencrypt/blob/master/src/lib/jsbn/rng.ts)
- 
-
+  
+* [bitwiseshiftleft/sjcl](https://github.com/bitwiseshiftleft/sjcl) (6 years old)
