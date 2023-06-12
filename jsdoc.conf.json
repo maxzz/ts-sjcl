@@ -1,7 +1,12 @@
 {
-  "templates": {
-    "default": {
-      "useLongnameInNav": true
+    "source": {
+        "include": ["./build/index.js", "./build"],
+        "includePattern": "build/.+\\.js(doc)?$",
+        "excludePattern": "(^|\\/|\\\\)_"
+    },
+    "templates": {
+        "default": {
+            "useLongnameInNav": true
+        }
     }
-  }
 }
