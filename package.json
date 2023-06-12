@@ -5,6 +5,7 @@
     "license": "MIT",
     "description": "Stanford Javascript Crypto Library updated to ES6",
     "author": "maxzz@msn.com",
+    "homepage": "https://github.com/maxzz/ts-sjcl",
     "type": "module",
     "devDependencies": {
         "@rollup/plugin-node-resolve": "^15.1.0",
