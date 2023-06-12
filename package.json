@@ -25,6 +25,6 @@
     ],
     "scripts": {
         "build": "tsc && rollup -c",
-        "doc": "jsdoc -c jsdoc.conf.json -d ./docs"
+        "doc": "jsdoc ./build -r -c jsdoc.conf.json -d ./doc --verbose"
     }
 }
