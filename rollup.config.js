@@ -41,7 +41,24 @@ const configMin = {
     ],
 };
 
+const configTsDefs = {
+    input: "./src/index.ts",
+    output: {
+        file: `dist/ts/${meta.name}.js`,
+        name: "WebSdk",
+        format: "es",
+    },
+    plugins: [
+        ...commonPlugins,
+        typescript({
+            emitDeclarationOnly: true,
+            declaration: true,
+        })
+    ],
+};
+
 export default [
     config,
     //configMin,
+    configTsDefs,
 ];
