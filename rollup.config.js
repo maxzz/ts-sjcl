@@ -2,6 +2,7 @@ import fs from 'fs';
 import nodeResolve from "@rollup/plugin-node-resolve";
 import typescript from "@rollup/plugin-typescript";
 import terser from "@rollup/plugin-terser";
+import filesize from "rollup-plugin-filesize";
 
 const meta = JSON.parse(fs.readFileSync('./package.json', { encoding: 'utf-8' }));
 
@@ -20,6 +21,7 @@ const config = {
     },
     plugins: [
         ...commonPlugins,
+        filesize({ showBeforeSizes: true, showGzippedSize: true }),
     ],
 };
 
