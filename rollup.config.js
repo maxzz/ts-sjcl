@@ -24,37 +24,35 @@ function createEsConfing({ input, output }) {
     };
 }
 
-const configMin = {
-    input: "./build/index.js",
-    output: {
-        file: `dist/${meta.name}.js`,
-        name: "WebSdk",
-        format: "umd",
-        indent: true,
-        extend: true,
-        banner: `//maxzz ${meta.homepage} v${meta.version}`
-    },
-    plugins: [
-        ...commonPlugins,
-        terser(),
-    ],
-};
+function createUdmMinConfing({ input, output }) {
+    return {
+        input,
+        output: {
+            file: output, name: "WebSdk", format: "umd",
+            indent: true,
+            extend: true,
+            banner: `//maxzz ${meta.homepage} v${meta.version}\n`
+        },
+        plugins: [
+            ...commonPlugins,
+            terser(),
+        ],
+    };
+}
 
-const configTsDefs = {
-    input: "./src/index.ts",
-    output: {
-        file: `dist/ts/${meta.name}.js`,
-        name: "WebSdk",
-        format: "es",
-    },
-    plugins: [
-        ...commonPlugins,
-        typescript({
-            emitDeclarationOnly: true,
-            declaration: true,
-        })
-    ],
-};
+function createTsDefsConfing({ input, output }) {
+    return {
+        input,
+        output: { file: output, name: "WebSdk", format: "es", },
+        plugins: [
+            ...commonPlugins,
+            typescript({
+                emitDeclarationOnly: true,
+                declaration: true,
+            })
+        ],
+    };
+}
 
 function createDtsConfing({ input, output }) {
     return {
@@ -68,7 +66,7 @@ function createDtsConfing({ input, output }) {
 
 export default [
     createEsConfing({ input: "./build/index.js", output: `dist/${meta.name}.js` }),
-    //configMin,
-    //configTsDefs,
+    createUdmMinConfing({ input: "./build/index.js", output: `dist/${meta.name}.js` }),
+    createTsDefsConfing({ input: "./src/index.ts", output: `dist/ts/${meta.name}.js` }),
     createDtsConfing({ input: "./@types/index.d.ts", output: `dist/${meta.name}.d.ts` }),
 ];
