@@ -6,6 +6,7 @@ import filesize from "rollup-plugin-filesize";
 import dts from 'rollup-plugin-dts';
 
 const meta = JSON.parse(fs.readFileSync('./package.json', { encoding: 'utf-8' }));
+const packageName = meta.name;
 
 const extensions = ['.ts', '.js'];
 
@@ -13,7 +14,7 @@ const commonPlugins = [
     nodeResolve({ extensions }),
 ];
 
-function createEsConfing({ input, output }) {
+function createConfing_es({ input, output }) {
     return {
         input,
         output: { file: output, name: "WebSdk", format: "es", },
@@ -24,7 +25,40 @@ function createEsConfing({ input, output }) {
     };
 }
 
-function createUdmMinConfing({ input, output }) {
+function createConfing_es_ts({ input, output }) {
+    return {
+        input,
+        output: { file: output, format: "es", },
+        plugins: [
+            ...commonPlugins,
+            typescript({ emitDeclarationOnly: true, declaration: true, }),
+            filesize({ showBeforeSizes: true, showGzippedSize: true }),
+        ],
+    };
+}
+
+function createConfing_ts_defs({ input, output }) {
+    return {
+        input,
+        output: { file: output, name: "WebSdk", format: "es", },
+        plugins: [
+            ...commonPlugins,
+            typescript({ emitDeclarationOnly: true, declaration: true, })
+        ],
+    };
+}
+
+function createConfing_dts({ input, output }) {
+    return {
+        input,
+        output: [{ file: output, format: "es" }],
+        plugins: [
+            dts(),
+        ],
+    };
+}
+
+function createConfing_udm_min({ input, output }) {
     return {
         input,
         output: {
@@ -40,33 +74,10 @@ function createUdmMinConfing({ input, output }) {
     };
 }
 
-function createTsDefsConfing({ input, output }) {
-    return {
-        input,
-        output: { file: output, name: "WebSdk", format: "es", },
-        plugins: [
-            ...commonPlugins,
-            typescript({
-                emitDeclarationOnly: true,
-                declaration: true,
-            })
-        ],
-    };
-}
-
-function createDtsConfing({ input, output }) {
-    return {
-        input,
-        output: [{ file: output, format: "es" }],
-        plugins: [
-            dts(),
-        ],
-    };
-}
-
 export default [
-    createEsConfing({ input: "./build/index.js", output: `dist/${meta.name}.js` }),
-    createUdmMinConfing({ input: "./build/index.js", output: `dist/${meta.name}.js` }),
-    createTsDefsConfing({ input: "./src/index.ts", output: `dist/ts/${meta.name}.js` }),
-    createDtsConfing({ input: "./@types/index.d.ts", output: `dist/${meta.name}.d.ts` }),
+    createConfing_es_ts({ input: "./src/index.ts", output: `dist/${packageName}.js` }),
+    //createConfing_es({ input: "./build/index.js", output: `dist/${packageName}.js` }),
+    // createConfing_ts_defs({ input: "./src/index.ts", output: `dist/ts/${packageName}.js` }),
+    // createConfing_dts({ input: "./build/types/index.d.ts", output: `dist/${packageName}.d.ts` }),
+    // createConfing_udm_min({ input: "./build/index.js", output: `dist/${packageName}.js` }),
 ];
