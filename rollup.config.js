@@ -3,6 +3,7 @@ import nodeResolve from "@rollup/plugin-node-resolve";
 import typescript from "@rollup/plugin-typescript";
 import terser from "@rollup/plugin-terser";
 import filesize from "rollup-plugin-filesize";
+import dts from 'rollup-plugin-dts';
 
 const meta = JSON.parse(fs.readFileSync('./package.json', { encoding: 'utf-8' }));
 
@@ -57,8 +58,17 @@ const configTsDefs = {
     ],
 };
 
+const configDts = {
+    input: "./@types/index.d.ts",
+    output: [{ file: "dist/ts-sjcl.d.ts", format: "es" }],
+    plugins: [
+        dts(),
+    ],
+};
+
 export default [
     config,
     //configMin,
-    configTsDefs,
+    //configTsDefs,
+    configDts,
 ];
