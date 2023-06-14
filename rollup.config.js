@@ -31,7 +31,8 @@ function createConfing_es_ts({ input, output }) {
         output: { file: output, format: "es", },
         plugins: [
             ...commonPlugins,
-            typescript({ emitDeclarationOnly: true, declaration: true, }),
+            // typescript({ emitDeclarationOnly: true, declaration: true, }),
+            typescript({}),
             filesize({ showBeforeSizes: true, showGzippedSize: true }),
         ],
     };
@@ -81,3 +82,5 @@ export default [
     // createConfing_dts({ input: "./build/types/index.d.ts", output: `dist/${packageName}.d.ts` }),
     // createConfing_udm_min({ input: "./build/index.js", output: `dist/${packageName}.js` }),
 ];
+
+console.log('NODE_ENV2', process.env.NODE_ENV2); // = 'production1'

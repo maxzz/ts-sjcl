@@ -30,6 +30,7 @@
         "typescript": "^5.1.3"
     },
     "scripts": {
-        "build": "tsc && rollup -c"
+        "build": "tsc && rollup -c",
+        "build:min": "SET NODE_ENV2=production1 && tsc && rollup -c"
     }
 }
