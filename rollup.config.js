@@ -13,18 +13,16 @@ const commonPlugins = [
     nodeResolve({ extensions }),
 ];
 
-const config = {
-    input: "./build/index.js",
-    output: {
-        file: `dist/${meta.name}.js`,
-        name: "WebSdk",
-        format: "es",
-    },
-    plugins: [
-        ...commonPlugins,
-        filesize({ showBeforeSizes: true, showGzippedSize: true }),
-    ],
-};
+function createEsConfing({ input, output }) {
+    return {
+        input,
+        output: { file: output, name: "WebSdk", format: "es", },
+        plugins: [
+            ...commonPlugins,
+            filesize({ showBeforeSizes: true, showGzippedSize: true }),
+        ],
+    };
+}
 
 const configMin = {
     input: "./build/index.js",
@@ -58,17 +56,19 @@ const configTsDefs = {
     ],
 };
 
-const configDts = {
-    input: "./@types/index.d.ts",
-    output: [{ file: "dist/ts-sjcl.d.ts", format: "es" }],
-    plugins: [
-        dts(),
-    ],
-};
+function createDtsConfing({ input, output }) {
+    return {
+        input,
+        output: [{ file: output, format: "es" }],
+        plugins: [
+            dts(),
+        ],
+    };
+}
 
 export default [
-    config,
+    createEsConfing({ input: "./build/index.js", output: `dist/${meta.name}.js` }),
     //configMin,
     //configTsDefs,
-    configDts,
+    createDtsConfing({ input: "./@types/index.d.ts", output: `dist/${meta.name}.d.ts` }),
 ];
