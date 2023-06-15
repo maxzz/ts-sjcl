@@ -1,11 +1,17 @@
 {
     "name": "ts-sjcl",
     "version": "1.0.2",
-    "private": true,
     "license": "MIT",
     "description": "Stanford Javascript Crypto Library updated to ES6",
     "author": "maxzz@msn.com",
     "homepage": "https://github.com/maxzz/ts-sjcl",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/maxzz/ts-sjcl.git"
+    },
+    "bugs": {
+        "url": "https://github.com/maxzz/ts-sjcl/issues"
+    },
     "keywords": [
         "sjcl"
     ],
@@ -27,6 +33,7 @@
         "typescript": "^5.1.3"
     },
     "scripts": {
+        "prepublish": "yarn build",
         "build": "rollup -c"
     }
 }
