@@ -1,6 +1,6 @@
 {
     "name": "ts-sjcl",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "license": "MIT",
     "description": "Stanford Javascript Crypto Library updated to ES6",
     "author": "maxzz@msn.com",
@@ -22,7 +22,7 @@
     "files": [
         "src",
         "./dist/ts-sjcl.js",
-        "./dist/ts-sjcl.d.js"
+        "./dist/ts-sjcl.d.ts"
     ],
     "devDependencies": {
         "@rollup/plugin-node-resolve": "^15.1.0",
