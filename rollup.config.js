@@ -31,8 +31,8 @@ function createConfing_es_ts({ input, output }) {
         output: { file: output, format: "es", },
         plugins: [
             ...commonPlugins,
-            // typescript({ emitDeclarationOnly: true, declaration: true, }),
-            typescript({}),
+            typescript({ emitDeclarationOnly: true, declaration: true, outDir: './types' }),
+            //typescript({}),
             filesize({ showBeforeSizes: true, showGzippedSize: true }),
         ],
     };
@@ -76,7 +76,7 @@ function createConfing_udm_min({ input, output }) {
 }
 
 export default [
-    createConfing_es_ts({ input: "./src/index.ts", output: `dist/${packageName}.js` }),
+    createConfing_es_ts({ input: "./src/index.ts", output: `dist2/${packageName}.js` }),
     //createConfing_es({ input: "./build/index.js", output: `dist/${packageName}.js` }),
     // createConfing_ts_defs({ input: "./src/index.ts", output: `dist/ts/${packageName}.js` }),
     // createConfing_dts({ input: "./build/types/index.d.ts", output: `dist/${packageName}.d.ts` }),

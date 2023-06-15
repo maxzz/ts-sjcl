@@ -1,6 +1,7 @@
 {
     "name": "ts-sjcl",
     "version": "1.0.2",
+    "private": true,
     "main": "index.js",
     "license": "MIT",
     "description": "Stanford Javascript Crypto Library updated to ES6",
@@ -31,6 +32,7 @@
     },
     "scripts": {
         "build": "tsc && rollup -c",
-        "build:min": "SET NODE_ENV2=production1 && tsc && rollup -c"
+        "build:min": "SET NODE_ENV2=production1 && tsc && rollup -c",
+        "build:r": "rollup -c"
     }
 }
