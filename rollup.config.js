@@ -5,8 +5,8 @@ import terser from "@rollup/plugin-terser";
 import filesize from "rollup-plugin-filesize";
 import dts from 'rollup-plugin-dts';
 
-const meta = JSON.parse(fs.readFileSync('./package.json', { encoding: 'utf-8' }));
-const packageName = meta.name;
+// const meta = JSON.parse(fs.readFileSync('./package.json', { encoding: 'utf-8' }));
+// const packageName = meta.name;
 
 const extensions = ['.ts', '.js'];
 
@@ -76,12 +76,12 @@ function createConfing_udm_min({ input, output }) {
 }
 
 export default [
-    createConfing_es_ts({ input: "./src/index.ts", output: `dist/${packageName}.js` }),
-    createConfing_dts({ input: "./dist/types/index.d.ts", output: `dist/${packageName}.d.ts` }),
+    createConfing_es_ts({ input: "./src/index.ts", output: `dist/index.js` }),
+    createConfing_dts({ input: "./dist/types/index.d.ts", output: `dist/index.d.ts` }),
     //createConfing_es({ input: "./build/index.js", output: `dist/${packageName}.js` }),
     // createConfing_ts_defs({ input: "./src/index.ts", output: `dist/ts/${packageName}.js` }),
     // createConfing_dts({ input: "./build/types/index.d.ts", output: `dist/${packageName}.d.ts` }),
     // createConfing_udm_min({ input: "./build/index.js", output: `dist/${packageName}.js` }),
 ];
 
-console.log('NODE_ENV2', process.env.NODE_ENV2); // = 'production1'
+//console.log('NODE_ENV2', process.env.NODE_ENV2); // = 'production1'
