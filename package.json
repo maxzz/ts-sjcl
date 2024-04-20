@@ -1,6 +1,6 @@
 {
     "name": "ts-sjcl",
-    "version": "1.0.7",
+    "version": "1.0.8",
     "license": "MIT",
     "description": "Stanford Javascript Crypto Library updated to typescript and ES6 module format.",
     "author": "maxzz@msn.com",
