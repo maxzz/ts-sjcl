@@ -4,3 +4,6 @@ export * as codec from './codec';
 export * as exception from './exception';
 export * as hash from './hash';
 export { random } from './prng';
+
+import * as sjcl from './all-exports';
+export default sjcl;

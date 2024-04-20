@@ -1,8 +1,8 @@
 {
     "name": "ts-sjcl",
-    "version": "1.0.6",
+    "version": "1.0.7",
     "license": "MIT",
-    "description": "Stanford Javascript Crypto Library updated to ES6",
+    "description": "Stanford Javascript Crypto Library updated to typescript and ES6 module format.",
     "author": "maxzz@msn.com",
     "homepage": "https://github.com/maxzz/ts-sjcl",
     "repository": {
@@ -16,9 +16,6 @@
         "sjcl"
     ],
     "type": "module",
-    "main": "dist/index.js",
-    "module": "dist/index.js",
-    "types": "dist/index.d.ts",
     "files": [
         "src",
         "dist/index.js",
@@ -34,6 +31,9 @@
         "tslib": "^2.5.3",
         "typescript": "^5.1.3"
     },
+    "main": "dist/index.js",
+    "module": "dist/index.js",
+    "types": "dist/index.d.ts",
     "scripts": {
         "prepublish": "yarn build",
         "build": "rollup -c"
